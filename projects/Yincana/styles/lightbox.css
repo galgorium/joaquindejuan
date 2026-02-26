@@ -1,0 +1,66 @@
+ @keyframes lum-noop {
+  0% {
+    zoom: 1;
+  }
+}
+.lum-lightbox {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.lum-lightbox.lum-open {
+  display: block;
+}
+.lum-lightbox.lum-closing,
+.lum-lightbox.lum-opening {
+  animation: lum-noop 1ms;
+}
+.lum-lightbox-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.lum-lightbox-loader {
+  display: none;
+}
+.lum-lightbox-inner img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.lum-lightbox-image-wrapper {
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+}
+
+/* 1. Define la animación usando @keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Empieza completamente transparente */
+    /* Opcional: añade un ligero desplazamiento para mayor impacto */
+    transform: translateY(20px); 
+  }
+  to {
+    opacity: 1; /* Termina completamente visible */
+    transform: translateY(0);
+  }
+}
+
+/* 2. Aplica la animación al elemento deseado */
+.fade-in-element {
+  /* Nombre de la animación, duración, función de tiempo */
+  animation: fadeIn 2s ease-in-out; 
+  /* Asegura que el estado final (opacity: 1) se mantenga después de la animación */
+  animation-fill-mode: forwards; 
+  /* Opcional: si el elemento ya está visible en el HTML, 
+     establece la opacidad inicial a 0 para que empiece invisible
+     mientras el CSS carga y aplica la animación.
+     Si el elemento se añade dinámicamente, esto no es necesario. */
+  opacity: 0; 
+}
